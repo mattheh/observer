@@ -1,0 +1,34 @@
+<h1>New Post</h1>
+
+<%= form_for :post, url: user_posts_path do |f| %>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+
+    <p>
+      <%= f.label :price %><br>
+      <%= f.text_field :price %>
+    </p>
+
+    <p>
+      <%= f.label :category %><br>
+      <%= f.text_field :category %>
+    </p>
+
+    <p>
+      <%= f.label :location %><br>
+      <%= f.text_field :location %>
+    </p>
+
+    <p>
+      <%= f.label :active %><br>
+      <%= f.check_box :active %>
+    </p>
+   
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
+
+<%= button_to 'Back', user_posts_path, method: :get %>
