@@ -38,6 +38,10 @@ class PostsController < ApplicationController
   end
 
   def toggle
+    @post = Post.find(params[:id])
+    @post.active = !@post.active
+    @post.save
+    redirect_to user_posts_path, method: :get
   end
 
   private
