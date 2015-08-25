@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :price
       t.string :category
       t.string :location
-      t.striring :url
+      t.string :url
       t.boolean :active
       t.references :user, index: true, foreign_key: true
 
