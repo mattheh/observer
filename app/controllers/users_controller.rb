@@ -17,6 +17,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
+    @user.save
+    redirect_to users_path, method: :get
   end
   
   def update
@@ -26,7 +29,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+
     @user.destroy
+    redirect_to users_path, method: :get
   end
 
   private
