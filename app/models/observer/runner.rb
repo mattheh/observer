@@ -2,21 +2,24 @@ require 'open-uri'
 module Observer
   module Runner
     def self.run
-      titles = []
+      get_urls.each do |url|
+        page = Nokogiri::HTML(open(url))   
+        puts page.class
+      end
     end  
 
-    def self.get_url
+    def self.get_urls
       info = []
       User.all.each do |user|
         user.posts.each do |post|
           title = post.title.split.join("+")
           category = codename(post.category)
           location = post.location.downcase
-          url = "#{location}.craigslist.org/search/#{category}?sort=date&query=#{title}"
+          url = "https://#{location}.craigslist.org/search/#{category}?sort=date&query=#{title}"
           info << url
         end
       end
-      puts info
+      return info
     end
 
     def self.codename(name)
