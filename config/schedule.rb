@@ -1,4 +1,7 @@
-every 2.minutes do
+set :output, "log/cron.log"
+
+set :environment, "development"
+every 1.minutes do
   rake "posts:run"
 end
 # Use this file to easily define all of your cron jobs.

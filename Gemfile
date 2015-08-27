@@ -5,7 +5,7 @@ gem 'pry-rails'
 # Needed for web crawling
 gem 'nokogiri'
 # Manages cron jobs
-gem 'whenever'
+gem 'whenever', require: false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
