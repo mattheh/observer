@@ -9,13 +9,13 @@ module Observer
           page.css("p").each do |link|
             begin
               break if !new_posting?(post, link)
-              (to_mail << link.css("a").attr("href").value) if (link.css("span.price").first.inner_text.split("$")[1].to_i < post.price)
+              (to_mail << "#{post.location.downcase}.craigslist.org#{link.css("a").attr("href").value}") if (link.css("span.price").first.inner_text.split("$")[1].to_i < post.price)
             rescue
             else
             end
           end
         end
-        puts to_mail
+        UserMailer.mail_urls(user, to_mail).deliver_now if to_mail.any?
       end
     end  
 
@@ -31,9 +31,6 @@ module Observer
       if codenames.include?(name)
         return codenames[name]
       end
-    end
-    def self.test
-      puts "TEST"
     end
 
     def self.new_posting?(post, link)
