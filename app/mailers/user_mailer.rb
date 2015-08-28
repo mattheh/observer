@@ -1,10 +1,10 @@
 class UserMailer < ActionMailer::Base
   default from: "example@gmail.com"
 
-  def mail_urls(user)
+  def mail_urls(user, urls)
     @user = user
-    #@url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    @urls = urls
+    mail(to: @user.email, subject: 'New Craigslist Postings!')
   end
 end
 
