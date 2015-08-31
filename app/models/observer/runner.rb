@@ -5,6 +5,7 @@ module Observer
       User.all.each do |user|
         to_mail = []
         user.posts.each do |post|
+          next if !post.active
           page = Nokogiri::HTML(open(get_url(post)))   
           page.css("p").each do |link|
             begin
