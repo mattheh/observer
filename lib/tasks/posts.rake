@@ -1,6 +1,6 @@
 namespace :posts do
   desc "Runs through active posts"
-  task run: [] do
+  task :run => :environment do
     Observer::Runner.run
     puts Time.now
 
