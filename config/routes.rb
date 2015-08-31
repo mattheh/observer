@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
 
   resources :users do
     resources :posts
   end
 
   post 'toggle/:user_id/:id' => 'posts#toggle', as: 'toggle'
+  get 'login' => 'sessions#new', as: 'login'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#delete', as: 'logout'
 
   root 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.
