@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'redis'
 # Makes the console oh so pretty
 gem 'pry-rails'
 # Needed for web crawling

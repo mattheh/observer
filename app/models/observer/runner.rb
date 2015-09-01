@@ -10,6 +10,7 @@ module Observer
           page.css("p").each do |link|
             begin
               break if !new_posting?(post, link)
+              puts "#{post.location.downcase}.craigslist.org#{link.css("a").attr("href").value}"
               (to_mail << "#{post.location.downcase}.craigslist.org#{link.css("a").attr("href").value}") if (link.css("span.price").first.inner_text.split("$")[1].to_i < post.price)
             rescue
             else
@@ -38,7 +39,7 @@ module Observer
       location = post.location.downcase
       inner_page = Nokogiri::HTML(open("https://#{location}.craigslist.org#{link.css("a").attr("href").value}"))
       post_time = Time.parse(inner_page.css("p").children.css("time").last.attr("datetime"))
-      return false if (Time.now - post_time) > 300
+      return false if (Time.now - post_time) > 600
       return true
     end
   end
